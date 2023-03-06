@@ -1,0 +1,22 @@
+class Solution {
+    int[][] sortedMatrix(int N, int Mat[][]) {
+        
+        // code here
+        int[] m = new int[N*N];
+        int k =0;
+        for(int i =0; i<N; i++){
+            for(int j : Mat[i]){
+                m[k++]=j;
+            }
+        }
+        Arrays.sort(m);
+        k =0;
+        for(int i =0; i<N;i++){
+            for(int j = 0 ;j<N ;j++){
+                Mat[i][j]=m[k++];
+            }
+        }
+        return Mat;
+        
+    }
+}
