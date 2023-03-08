@@ -1,0 +1,15 @@
+class Solution
+{
+	public static int kthSmallest(int[][]mat,int n,int k)
+	{
+        int[] m = new int[n*n];
+        int idx = 0 ;
+        for(int i = 0 ; i < n ; i++){
+            for(int j : mat[i]){
+                m[idx++] = j;
+            }
+        }
+        Arrays.sort(m);
+        return m[k-1];
+    }
+}
