@@ -1,0 +1,35 @@
+class Solution {
+    public int maxArea(int M[][], int n, int m) {
+        // add code here.
+        for(int i=1;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(M[i][j]==1) M[i][j]+=M[i-1][j];
+            }
+        }
+        int currArea=0,maxArea=0;
+        Stack<Integer> st=new Stack<>();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(st.isEmpty() || M[i][st.peek()]<M[i][j]) st.add(j);
+                else{
+                    while(!st.isEmpty() && M[i][st.peek()]>=M[i][j]){
+                        int temp=st.pop();
+                        if(st.isEmpty()) currArea=M[i][temp]*(j);
+                        else currArea=M[i][temp]*(j-st.peek()-1);
+                        maxArea=Math.max(maxArea,currArea);
+                    }
+                    st.add(j);
+                }
+            }
+            while(!st.isEmpty()){
+                int temp=st.pop();
+                if(st.isEmpty()) currArea=M[i][temp]*(m);
+                else currArea=M[i][temp]*(m-st.peek()-1);
+                maxArea=Math.max(maxArea,currArea);
+            }
+            // System.out.println(i+" and maxArea "+maxArea);
+            st.clear();
+        }
+        return maxArea;
+    }
+}
