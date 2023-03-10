@@ -1,0 +1,36 @@
+class Sol
+{
+    int countRev (String str)
+    {
+        if(str.length()%2==1){
+            return -1;
+        }
+        Stack<Character> s = new Stack<>();
+        for(int i=0;i<str.length();i++){
+            char c = str.charAt(i);
+            if(c=='{'){
+                s.push(c);
+            }
+            else{
+                if(s.size()==0 || s.peek()=='}'){
+                    s.push(c);
+                }
+                else{
+                    s.pop();
+                }
+            }
+        }
+        int left = 0;
+        int right = 0;
+        while(s.size()>0){
+            char c = s.pop();
+            if(c=='{'){
+                left++;
+            }
+            else{
+                right++;
+            }
+        }
+        return (left + 2 - 1)/2 + (right + 2 - 1)/2;
+    }
+}
