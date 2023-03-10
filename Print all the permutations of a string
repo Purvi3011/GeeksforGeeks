@@ -1,0 +1,16 @@
+class Solution {
+    public Set<String> strSet = new HashSet<>();
+    public List<String> find_permutation(String S) {
+        gen_permu("", S);
+        List<String> ans = new ArrayList<>(strSet);
+        Collections.sort(ans);
+        return ans;
+    }
+    
+    public void gen_permu(String prefix, String str) {
+        if(str.isEmpty()) strSet.add(prefix);
+        for(int i = 0; i < str.length(); i++) {
+            gen_permu(prefix+str.charAt(i), str.substring(0,i) + str.substring(i+1, str.length()));
+        }
+    }
+}
