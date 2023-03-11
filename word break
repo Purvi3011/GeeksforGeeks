@@ -1,0 +1,24 @@
+class Sol
+{
+    public static int wordBreak(String A, ArrayList<String> B )
+    {
+        //code here
+        HashSet<String> dict=new HashSet<>();
+        for(int i=0;i<B.size();i++){
+            dict.add(B.get(i));
+        }
+        int n=A.length();
+        boolean[] dp=new boolean[n+1];
+        dp[0]=true;
+        for(int i=1;i<=n;i++){
+            for(int j=0;j<i;j++){
+                if(dp[j] ==true && dict.contains(A.substring(j,i))){
+                    dp[i]=true;
+                    break;
+                }
+            }
+        }
+        return dp[n]==true ? 1:0;
+        
+    }
+}
