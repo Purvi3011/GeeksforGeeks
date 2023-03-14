@@ -1,0 +1,40 @@
+class Solution {
+    public int findSubString( String str) {
+        // Your code goes here
+        Set<Character>set=new HashSet<>();
+        for(int i=0;i<str.length();i++){
+            set.add(str.charAt(i));
+        }
+        Map<Character,Integer>map=new HashMap<>();
+        int len=str.length();
+        int i=0;
+        int j=-1;
+        while(true){
+            boolean f1=false;
+            boolean f2=false;
+        
+        while(i<str.length()&&map.size()<set.size()){
+            
+            map.put(str.charAt(i),map.getOrDefault(str.charAt(i),0)+1);
+            i++;
+            f1=true;
+        }
+        
+        while(j<i&&map.size()==set.size()){
+            len=Math.min(len,i-j-1);
+            
+            j++;
+                char ch=str.charAt(j);
+                
+                
+                if(map.get(ch)==1)map.remove(ch);
+                else map.put(ch,map.get(ch)-1);
+            f2=true;
+            
+            
+        }
+        if(f1==false&&f2==false)break;
+        }
+        return len;
+    }
+}
