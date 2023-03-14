@@ -1,0 +1,20 @@
+class Solution{
+      Node temp = null;
+    public void populateNext(Node node){
+        //code here
+        if (node != null) {
+            // First set the next pointer in right subtree
+            populateNext(node.right);
+ 
+            // Set the next as previously visited node in
+            // reverse Inorder
+            node.next = temp;
+ 
+            // Change the prev for subsequent node
+            temp = node;
+ 
+            // Finally, set the next pointer in left subtree
+            populateNext(node.left);
+        }
+    }
+}
