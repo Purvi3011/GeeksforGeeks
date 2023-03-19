@@ -1,0 +1,25 @@
+class Solution
+{ 
+    static void reverse(Stack<Integer> st)
+    {
+        // add your code here
+        if(st.size()> 0){
+            int x = st.peek();
+            st.pop();
+            reverse(st);
+            insert_at_btm(st, x);
+        }
+        return;
+    }
+    static void insert_at_btm(Stack<Integer> st, int x){
+        if(st.size() == 0)
+            st.push(x);
+        else{
+            int y = st.peek();
+            st.pop();
+            insert_at_btm(st, x);
+            st.push(y);
+        }
+        return;
+    }
+}
