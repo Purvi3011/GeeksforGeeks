@@ -1,0 +1,18 @@
+class Solution {
+    //Function to find first node if the linked list has a loop.
+    public static int findFirstNode(Node head){
+        //code here
+         HashMap<Node,Integer> map = new HashMap<>();
+        Node temp = head;
+        while(temp != null){
+            if(map.containsKey(temp)){
+                return temp.data;
+            }
+            else{
+                map.put(temp,1);
+            }
+            temp = temp.next;
+        }
+        return -1;
+    }
+}
