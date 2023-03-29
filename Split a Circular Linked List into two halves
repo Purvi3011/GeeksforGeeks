@@ -1,0 +1,48 @@
+class gfg
+{
+        // Function  to split a circular LinkedList
+	    void splitList(circular_LinkedList list)
+        {
+             //DO NOT REMOVE THESE 3 LINES
+             Node head=list.head;
+             Node head1=null;
+             Node head2=null;
+             
+            //first we find the middle-1 element of the circular linkedlist using slow,fast pointers
+             Node slow=head;
+             Node fast=head;
+             
+             // fast.next!=head  in case if linkedlist is odd
+             // fast.next.next!=head in case if linkedlist is even
+             
+             while(fast.next!=head && fast.next.next!=head){
+                
+                fast=fast.next.next;
+                slow=slow.next;
+                 
+             }
+             
+             head1=head;
+             head2=slow.next;
+             slow.next=head1;
+             
+             if(fast.next==head){
+                 fast.next=head2;
+             }
+             else{
+                 fast.next.next=head2;
+             }
+             
+             //Modify these head1 and head2 here, head is the starting point of our original linked list.    
+             
+                    
+            //remove end 
+             
+             //DO NOT REMOVE THESE 2 LINES
+             list.head1=head1;
+             list.head2=head2;
+	 
+            
+        }
+	 
+}
