@@ -1,0 +1,31 @@
+class Solution
+{
+    //Function to check whether the list is palindrome.
+    boolean isPalindrome(Node head) 
+    {
+        ArrayList<Integer> list = new ArrayList<>();
+    
+    
+    Node current = head;
+    while (current != null) {
+        list.add(current.data);
+        current = current.next;
+    }
+    
+    
+    current = head;
+    int i = list.size() - 1;
+    while (current != null) {
+        if (current.data != list.get(i)) {
+            return false;
+        }
+        current = current.next;
+        i--;
+    }
+    
+  
+    return true;
+        
+        
+    }    
+}
